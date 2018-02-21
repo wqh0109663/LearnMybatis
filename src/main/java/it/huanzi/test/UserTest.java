@@ -35,10 +35,21 @@ public class UserTest {
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        UserDao mapper = sqlSession.getMapper(UserDao.class);
-        System.out.println(mapper);
-        User user = mapper.getUser(1);
-        System.out.println(user);
+        try {
+            UserDao mapper = sqlSession.getMapper(UserDao.class);
+            //        System.out.println(mapper);
+            //        User user = mapper.getUser(1);
+            //        System.out.println(user);
+            User user = new User(null,"matin","wqh666","huanshuai@qq.com");
+            mapper.addUser(user);
+            System.out.println(user.getId());
+//            mapper.update(user);
+            //mapper.delete(2);
+            sqlSession.commit();
+
+        } finally {
+            sqlSession.close();
+        }
 
     }
 }

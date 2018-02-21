@@ -7,4 +7,9 @@ import it.huanzi.entity.User;
  */
 public interface UserDao {
     User getUser(Integer id);
+    void addUser(User user);
+    void delete(Integer id);
+    void update(User user);
+
+
 }

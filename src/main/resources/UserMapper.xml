@@ -6,7 +6,25 @@
    <!-- <select id="getUser" resultType="it.huanzi.entity.User">
         select id, user_name , password ,email from user where id = #{id}
     </select>-->
-    <select id="getUser" resultType="user">
+    <select id="getUser" resultType="user" databaseId="mysql">
         select id, user_name , password ,email from user where id = #{id}
     </select>
+    <!--如果你的数据库支持自动生成主键的字段（比如 MySQL 和 SQL Server），
+    那么你可以设置 useGeneratedKeys=”true”，然后再把 keyProperty 设置到目标属性上就OK了,如果不写这个属性
+    如果传入的id是null 那么直接获取的就是null ，加上之后传入的是null getId得到的就是自增的序号-->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+      insert into user(user_name, password, email) VALUES (#{userName},#{password},#{email})
+    </insert>
+
+    <delete id="delete" >
+        DELETE  FROM  user WHERE id = #{id}
+    </delete>
+
+    <update id="update">
+        UPDATE user SET user_name = #{userName} WHERE id = #{id}
+    </update>
+
+
+
+
 </mapper>

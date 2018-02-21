@@ -9,6 +9,16 @@ public class User {
     private String password;
     private String email;
 
+    public User() {
+    }
+
+    public User(Integer id, String userName, String password, String email) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "User{" +
