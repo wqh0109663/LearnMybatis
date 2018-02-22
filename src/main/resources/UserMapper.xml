@@ -12,8 +12,13 @@
     <!--如果你的数据库支持自动生成主键的字段（比如 MySQL 和 SQL Server），
     那么你可以设置 useGeneratedKeys=”true”，然后再把 keyProperty 设置到目标属性上就OK了,如果不写这个属性
     如果传入的id是null 那么直接获取的就是null ，加上之后传入的是null getId得到的就是自增的序号-->
+
+    <!--还可以一次插入多条数据-->
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
-      insert into user(user_name, password, email) VALUES (#{userName},#{password},#{email})
+      insert into user(user_name, password, email) VALUES
+          <foreach collection="list" item="item" separator=",">
+              (#{item.userName},#{item.password},#{item.email})
+          </foreach>
     </insert>
 
     <delete id="delete" >

@@ -10,12 +10,14 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wqh on 2018/2/18.
  */
 public class UserTest {
-    @Test
+   /* @Test
     public void test() throws IOException {
         String resource = "mybatis-conf.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -28,7 +30,7 @@ public class UserTest {
             session.close();
         }
 
-    }
+    }*/
     @Test
     public void test01() throws IOException {
         String resource = "mybatis-conf.xml";
@@ -40,9 +42,13 @@ public class UserTest {
             //        System.out.println(mapper);
             //        User user = mapper.getUser(1);
             //        System.out.println(user);
-            User user = new User(null,"matin","wqh666","huanshuai@qq.com");
-            mapper.addUser(user);
-            System.out.println(user.getId());
+            User user = new User(null,"matin2","wqh666","huanshuai@qq.com");
+            User user1 = new User(null,"matin1","wqh666","huanshuai@qq.com");
+            List<User> list = new ArrayList<User>();
+            list.add(user);
+            list.add(user1);
+            mapper.addUser(list);
+            System.out.println(user1.getId());
 //            mapper.update(user);
             //mapper.delete(2);
             sqlSession.commit();
