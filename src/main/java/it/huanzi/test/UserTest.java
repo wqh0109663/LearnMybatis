@@ -1,6 +1,7 @@
 package it.huanzi.test;
 
 import it.huanzi.dao.UserDao;
+import it.huanzi.dao.UserInsertDao;
 import it.huanzi.entity.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -56,6 +57,24 @@ public class UserTest {
         } finally {
             sqlSession.close();
         }
+
+    }
+    @Test
+    public void test03() throws IOException {
+        String resource = "mybatis-conf.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            UserInsertDao mapper = sqlSession.getMapper(UserInsertDao.class);
+            User user = new User(15,"heima","wqh666","huanshuai@qq.com");
+            mapper.insertUser(user);
+            sqlSession.commit();
+
+        } finally {
+            sqlSession.close();
+        }
+
 
     }
 }

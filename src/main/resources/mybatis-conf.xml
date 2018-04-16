@@ -30,6 +30,6 @@
         <property name="Oracle" value="oracle" />
     </databaseIdProvider>
     <mappers>
-        <mapper resource="UserMapper.xml"/>
+        <mapper resource="it/huanzi/dao/UserMapper.xml"/>
     </mappers>
 </configuration>
