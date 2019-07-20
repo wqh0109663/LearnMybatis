@@ -7,6 +7,7 @@
     <properties resource="mysql.properties"/>
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
     </settings>
     <typeAliases>
         <typeAlias type="it.huanzi.entity.User" alias="user"/>
@@ -30,6 +31,7 @@
         <property name="Oracle" value="oracle" />
     </databaseIdProvider>
     <mappers>
-        <mapper resource="it/huanzi/dao/UserMapper.xml"/>
+        <mapper resource="UserMapper.xml"/>
+        <mapper class="it.huanzi.dao.UserInsertDao"/>
     </mappers>
 </configuration>

@@ -1,9 +1,19 @@
 package it.huanzi.entity;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.Serializable;
+
 /**
- * Created by wqh on 2018/2/18.
+ * @author 吴启欢
+ * @version 1.0
+ * @date 19-7-19 下午9:30
  */
-public class User {
+@Data
+@Slf4j
+public class User implements Serializable {
+
     private Integer id;
     private String userName;
     private String password;
@@ -18,46 +28,6 @@ public class User {
         this.password = password;
         this.email = email;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getuserName() {
-        return userName;
-    }
-
-    public void setuserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
+
+
